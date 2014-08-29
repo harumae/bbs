@@ -1,0 +1,16 @@
+{
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.php.net"
+        }
+    ],
+
+    "require": {
+        "phalcon/devtools": "dev-master",
+        "pear-pear.php.net/PEAR": "1.*",
+        "pear-pear.php.net/Log": "1.*",
+        "pear-pear.php.net/Mail": "1.*",
+        "pear-pear.php.net/Net_SMTP": "1.*"
+    }
+}
