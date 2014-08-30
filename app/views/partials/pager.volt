@@ -3,14 +3,14 @@
     {% if page.current <= page.before %}
       <li class="disabled"><a>
     {% else %}
-      <li><a href="{{ base_uri }}/posts/{{ page.before }}">
+      <li><a href="{{ url("posts") }}/{{ page.before }}">
     {% endif %}
     <span class="glyphicon glyphicon-chevron-left"></span>前へ
     </a></li>
     {% if page.current >= page.next %}
       <li class="disabled"><a>
     {% else %}
-      <li><a href="{{ base_uri }}/posts/{{ page.next }}">
+      <li><a href="{{ url("posts") }}/{{ page.next }}">
     {% endif %}
     次へ<span class="glyphicon glyphicon-chevron-right"></span>
     </a></li>

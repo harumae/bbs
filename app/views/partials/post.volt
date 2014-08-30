@@ -16,15 +16,15 @@
       <div class="panel panel-info">
         <div class="post-title panel-heading">
           <strong>
-            <a href="{{ base_uri }}items/{{ post.id }}">{{ post.title|e|url|nl2br }}</a>
+            <a href="{{ url("items") }}/{{ post.id }}">{{ post.title|e|url|nl2br }}</a>
           </strong>
         </div>
 
         <div class="post-desc panel-body">
 
           {% if post.image_id !== null %}
-            <a href="{{ base_uri }}images/raw/{{ post.image_id }}" target="_blank">
-              <img src="{{ base_uri }}images/thumb/{{ post.image_id }}"
+            <a href="{{ url("images") }}/raw/{{ post.image_id }}" target="_blank">
+              <img src="{{ url("images") }}/thumb/{{ post.image_id }}"
                    width="{{ post.images.thumb_width }}"
                    height="{{ post.images.thumb_height }}"/>
             </a><br/><br/>
@@ -40,10 +40,10 @@
 
       <div class="col-md-1">
         <div class="post-action text-right">
-          <a class="post-menu" href="{{ base_uri }}posts/edit/{{ post.id }}">
+          <a class="post-menu" href="{{ url("posts/edit") }}/{{ post.id }}">
             <span class="glyphicon glyphicon-pencil"></span>
           </a>
-          <a class="post-menu" href="{{ base_uri }}posts/delete/{{ post.id }}">
+          <a class="post-menu" href="{{ url("posts/delete") }}/{{ post.id }}">
             <span class="glyphicon glyphicon-trash"></span>
           </a>
         </div><!-- post-action -->

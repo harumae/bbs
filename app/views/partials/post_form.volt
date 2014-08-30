@@ -7,7 +7,7 @@
   enctype="multipart/form-data"
 >
 
-<input type="hidden" name="MAX_FILE_SIZE" value="124000"/>
+<input type="hidden" name="MAX_FILE_SIZE" value="2048000"/>
 
 <div class="form-group row">
   <label for="title" id="title-label" class="col-md-4 control-label text-right"><span class="req">*</span>タイトル：</label>
@@ -110,8 +110,8 @@
 <div class="row">
   <label id="file-label" class="col-md-4 control-label text-right">アップロード画像：</label>
   <div class="col-md-5">
-    <a href="{{ base_uri }}images/raw/{{ item.image_id }}" target="_blank">
-      <img src="{{ base_uri }}images/thumb/{{ item.image_id }}"/>
+    <a href="{{ url("images/raw") }}/{{ item.image_id }}" target="_blank">
+      <img src="{{ url("images/thumb") }}/{{ item.image_id }}"/>
     </a>
     <br/><br/>
   </div>

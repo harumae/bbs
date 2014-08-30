@@ -1,5 +1,5 @@
 <form
-  action="{{ base_uri }}/users/login"
+  action="{{ url("users/login") }}"
   method="post"
   id="login-form"
   class="form-inline text-center"

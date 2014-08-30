@@ -53,6 +53,14 @@ class PostsController extends BaseController {
 
             if ($images->create()) {
                 $lastId = $images->id;
+            } else {
+                $this->flashSession->error('failed to create images.');
+                return $this->response->redirect("posts");
+            }
+        } else {
+            // check upload error exists or not.
+            if ($this->_hasUploadError()) {
+                return $this->response->redirect("posts");
             }
         }
 
@@ -114,6 +122,14 @@ class PostsController extends BaseController {
 
                 if ($images->create()) {
                     $posts->image_id = $images->id;
+                } else {
+                    $this->flashSession->error('failed to create images.');
+                    return $this->response->redirect("posts");
+                }
+            } else {
+                // check upload error exists or not.
+                if ($this->_hasUploadError()) {
+                    return $this->response->redirect("posts");
                 }
             }
 
@@ -225,5 +241,39 @@ class PostsController extends BaseController {
         }
 
         return $this->response;
+    }
+
+    private function _hasUploadError() {
+        $hasError = false;
+
+        switch($_FILES['image-file']['error']) {
+        case UPLOAD_ERR_OK:
+        case UPLOAD_ERR_NO_FILE:
+            // no error
+            break;
+        case UPLOAD_ERR_INI_SIZE:
+            $this->flashSession->error(
+                'アップロードファイルのサイズは' . ini_get('upload_max_filesize')/1024000 . 'MB以下です。'
+            );
+            $hasError = true;
+            break;
+        case UPLOAD_ERR_FORM_SIZE:
+            $this->flashSession->error(
+                'アップロードファイルのサイズは' . $this->request->getPost('MAX_FILE_SIZE')/1024000 . 'MB以下です。'
+            );
+            $hasError = true;
+            break;
+        case UPLOAD_ERR_PARTIAL:
+        case UPLOAD_ERR_NO_TMP_DIR:
+        case UPLOAD_ERR_CANT_WRITE:
+        case UPLOAD_ERR_EXTENSION:
+            $this->flashSession->error('ファイルのアップロードに失敗しました。');
+            $hasError = true;
+            break;
+        default:
+            break;
+        }
+
+        return $hasError;
     }
 }
