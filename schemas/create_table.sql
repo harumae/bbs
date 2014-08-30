@@ -35,6 +35,6 @@ CREATE TABLE IF NOT EXISTS `bbsdb04`.`users` (
     `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新日時',
     `name` varchar(20) NOT NULL COMMENT 'ユーザー名',
     `password` varchar(20) NOT NULL COMMENT 'パスワード',
-    `is_active` tinyint NOT NULL DEFAULT 0 COMMENT 'アクティブフラグ'
+    `is_active` tinyint NOT NULL DEFAULT 0 COMMENT 'アクティブフラグ',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
